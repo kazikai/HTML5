@@ -1,0 +1,38 @@
+/*charset은 선언 안해줘도 되지만, 한글때문에 선언해주는게 명시적으로 좋다. */
+@charset "utf-8";
+
+/* reset */
+/* body 에는 margin 8px 이 기본적으로 들어가 있다. (userAgent StyleSheet)*/
+/* 이걸 초기화 시켜줄 필요가 있음 */
+body{ 
+    margin: 0;
+    color: #fff;
+}
+/* HTML5 Shiv파일이 필요 */
+/* HTML5 BLOCK 요소들을 초기화 해줄 필요가 있음 */
+header, footer, section, article, nav, aside, figure, figcaption{
+    display: block;
+}
+
+/* layout */
+.container{
+    background: #ddd;
+}
+.header{
+    background: red;
+}
+.body{
+    background: green;
+}
+main{
+    background: black;
+}
+.lnb{
+    background: #333;
+}
+.aside{
+    background: purple;
+}
+.footer{
+    background: blue;
+}

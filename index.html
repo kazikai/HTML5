@@ -6,29 +6,42 @@
 <title>HTML5 &gt dd</title> <!-- gt lt 에 따라 > < 가 따로 보임 -->
 <style>/*embed 방식 또는 internal 방식 */
 </style>
-<link rel="stylesheet" type="text/css" href="">
+<link rel="stylesheet" type="text/css" href="default.css">
 <!--HTML5 에서는 type 속성을 생략 가능 하다.  -->
 <!--바디에 넣는것을 권장-->
+
+<!--IE에서만 로딩해야 해서. 처리 -->
+<!--HTML5 Shiv가 필요, IE 7& 8& 9에서 동일하게 보여주기 위해 (HTML5) -->
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<![endif]-->
+<!--IE에서만 로딩해야 해서. 처리 -->
+
 <script src=""></script>
 </head>
 <body>
 <div class="container">
     <!--메인 컨텐츠로 바로 가기위한 건너뛰기 요소가 있어야 한다. -->
+    <a href="#main">메뉴 건너 뛰기</a>
     <header class="header">
         <!--제목, 한 페이지에 여러개가 등장 가능하다. -->
+        .header
     </header>
     <div class="body">
         <!--컬럼 레이아웃을 만들 경우, 랩퍼가 있으면 좋다. -->
         <!-- 마크업을 할 경우엔, 모바일에서 보이는 화면을 기준으로 마크업을 하는게 좋다. -->
         <main id="main" tabindex="0">
-            메인
+            #main
             <!-- 웹 페이지의 본문 영역, 반복되는 영역은 들어가면 안된다. 한 페이지에 딱 한번만 사용 가능 굳이 id/class를 지정해줄 필요가 없다.  -->
             <!-- main 이란 아이디를 넣은 이유는 anchor 의 목적지로 사용 하기 위해 지정함 -->
             <!-- 키보드 초점을 받기 위해 -->
         </main>
-        <nav>
+        <!-- Local Navigation영역은 lnb라는 영역을 사용중-->
+        <nav class="lnb">
+            nav
         </nav>
-        <aside>
+        <aside class="aside">
+            aside
         </aside>
     </div>
     <footer class="footer">
