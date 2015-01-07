@@ -15,6 +15,26 @@ header, footer, section, article, nav, aside, figure, figcaption{
 }
 
 /* layout */
+/*
+[href="#main"]{
+    display: none;
+}로 표현 해도 되지만. 클래스를 줘서 하는것이 좀더 좋다. 
+*/
+.skip {
+    /* display none의 경우, 상지 장애인이 볼수 없기 때문에 */
+    /* 아래와 같이 표현 하는게 더 좋다. */
+    display: block;
+    overflow: hidden;
+    height: 1px; /*1px로 준 이유는. 화면에서 높이가 0 이면, 키보드 접근을 하기 어려운 브라우저가 있기 때문에 최소값인 1px로 준다. */
+    margin: 0 0 -1px 0; /* 위의 height값이 문제가 된다면. 1px를 음수로 줘서 붙게 만들어준다. */ 
+}
+/*a 요소가 (바로가기) 키보드 접근을 받았을 경우 해당 바로가기 메뉴가 바로 나오게끔 아래 처리를 해준다.  */
+.skip:focus {
+    height: auto;
+    text-align: center;
+    padding: 10px;
+}
+
 .container{
     background: #ddd;
 }
@@ -36,3 +56,32 @@ main{
 .footer{
     background: blue;
 }
+/* All ( 공통 스타일, 모바일, 태블릿, 데스크탑 모두 ) */
+/* 먼저 공통 속성을 파악 해두는것이 도움이 된다. */
+
+/* Mobile */
+@media (max-width: 767px){
+    /* 화면을 줄여보면 responsive 로 적용된다.  */
+    body{background: red;}
+}
+
+
+/* Tablet & Desktop:이게 필요하지 않을수도 있지만, tablet과 dektop에 공통으로 적용 되는 스타일  */
+@media (min-width: 768px){
+    /* 화면을 줄여보면 responsive 로 적용된다.  */
+    body{background: green;}
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1024px){
+    /* 화면을 줄여보면 responsive 로 적용된다.  */
+    body{background: blue;}
+}
+
+/* Desktop */
+@media (min-width: 1025px){
+    /* 화면을 줄여보면 responsive 로 적용된다.  */
+    body{background: black;}
+}
+
+
