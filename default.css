@@ -4,9 +4,12 @@
 /* reset */
 /* body 에는 margin 8px 이 기본적으로 들어가 있다. (userAgent StyleSheet)*/
 /* 이걸 초기화 시켜줄 필요가 있음 */
+html,
+body{
+    min-height: 100%;
+}
 body{ 
     margin: 0;
-    color: #fff;
 }
 /* HTML5 Shiv파일이 필요 */
 /* HTML5 BLOCK 요소들을 초기화 해줄 필요가 있음 */
@@ -34,7 +37,7 @@ header, footer, section, article, nav, aside, figure, figcaption{
     text-align: center;
     padding: 10px;
 }
-
+/* 반응형 예제에서 변경 
 .container{
     background: #ddd;
 }
@@ -56,32 +59,115 @@ main{
 .footer{
     background: blue;
 }
+*/
 /* All ( 공통 스타일, 모바일, 태블릿, 데스크탑 모두 ) */
 /* 먼저 공통 속성을 파악 해두는것이 도움이 된다. */
+body{
+    background: -webkit-linear-gradient( #ccc,#fff);
+    background: -o-linear-gradient( #ccc,#fff);
+    background: -moz-linear-gradient( #ccc,#fff);
+    background: -ms-linear-gradient( #ccc,#fff);
+    background: linear-gradient( #ccc,#fff);
+    margin: 0 10px;
+}
+.header>h1{
+    font-size: 24px;
+    text-shadow: 1px 1px 0 #fff;
+    /* x, y, blur, color 순서로 
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #666;
+    text-shadow:x y blur color;
+    */
+}
 
+.lnb{
+    background: #fff;
+    border-bottom: 1px solid #ccc
+}
+
+.lnb>h2{
+    margin: 0;
+    border : 1px solid #ccc;
+    border-left: 0;
+    border-right: 0;
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 32px;
+}
+.lnb>ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/* 선택자를 작성할 경우 2단계 이상 깊어 지지 않도록 해야 한다. 오른쪽부터 탐색 */
+.lnb a{
+    text-decoration: none;
+    color: #666;
+    display: block;
+    line-height: 28px;
+    padding: 0 10px;
+    font-size: 12px;
+}
+.aside{
+    background: #ddd;
+    border-radius: 4px;
+}
+/* block 레벨에서 line-height 속성이 수직 중앙 정렬이 되지 않는다. inline일때만 */
+.aside>h2{
+    margin: 0;
+    padding: 0 10px;
+    line-height: 32px;
+    border-bottom: 1px solid #fff;
+    font-size: 14px;
+}
+.aside>ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.aside a{
+    text-decoration: none;
+    color: #000;
+    font-size: 12px;
+    padding: 0 10px;
+    line-height: 28px;
+    display: block;
+}
+.footer{
+    border-top: 1px solid #ccc;
+    font-size: 12px;
+    margin: 15px 0 0 0;
+}
+main{
+    background: #fff;
+    border-radius: 5px;
+}
+main,
+.lnb,
+.aside{
+    margin-bottom: 15px;
+}
+.article{
+    padding: 10px;
+}
 /* Mobile */
 @media (max-width: 767px){
     /* 화면을 줄여보면 responsive 로 적용된다.  */
-    body{background: red;}
 }
 
 
 /* Tablet & Desktop:이게 필요하지 않을수도 있지만, tablet과 dektop에 공통으로 적용 되는 스타일  */
 @media (min-width: 768px){
     /* 화면을 줄여보면 responsive 로 적용된다.  */
-    body{background: green;}
 }
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1024px){
     /* 화면을 줄여보면 responsive 로 적용된다.  */
-    body{background: blue;}
 }
 
 /* Desktop */
 @media (min-width: 1025px){
     /* 화면을 줄여보면 responsive 로 적용된다.  */
-    body{background: black;}
 }
 
 
