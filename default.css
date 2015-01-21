@@ -6,9 +6,9 @@
 /* 이걸 초기화 시켜줄 필요가 있음 */
 html,
 body{
-    min-height: 100%;
+    min-height: 100%;x`
 }
-body{ 
+body{
     margin: 0;
 }
 /* HTML5 Shiv파일이 필요 */
@@ -21,7 +21,7 @@ header, footer, section, article, nav, aside, figure, figcaption{
 /*
 [href="#main"]{
     display: none;
-}로 표현 해도 되지만. 클래스를 줘서 하는것이 좀더 좋다. 
+}로 표현 해도 되지만. 클래스를 줘서 하는것이 좀더 좋다.
 */
 .skip {
     /* display none의 경우, 상지 장애인이 볼수 없기 때문에 */
@@ -29,7 +29,7 @@ header, footer, section, article, nav, aside, figure, figcaption{
     display: block;
     overflow: hidden;
     height: 1px; /*1px로 준 이유는. 화면에서 높이가 0 이면, 키보드 접근을 하기 어려운 브라우저가 있기 때문에 최소값인 1px로 준다. */
-    margin: 0 0 -1px 0; /* 위의 height값이 문제가 된다면. 1px를 음수로 줘서 붙게 만들어준다. */ 
+    margin: 0 0 -1px 0; /* 위의 height값이 문제가 된다면. 1px를 음수로 줘서 붙게 만들어준다. */
 }
 /*a 요소가 (바로가기) 키보드 접근을 받았을 경우 해당 바로가기 메뉴가 바로 나오게끔 아래 처리를 해준다.  */
 .skip:focus {
@@ -37,7 +37,7 @@ header, footer, section, article, nav, aside, figure, figcaption{
     text-align: center;
     padding: 10px;
 }
-/* 반응형 예제에서 변경 
+/* 반응형 예제에서 변경
 .container{
     background: #ddd;
 }
@@ -73,7 +73,7 @@ body{
 .header>h1{
     font-size: 24px;
     text-shadow: 1px 1px 0 #fff;
-    /* x, y, blur, color 순서로 
+    /* x, y, blur, color 순서로
     text-shadow: 1px 1px 0 #fff, -1px -1px 0 #666;
     text-shadow:x y blur color;
     */
@@ -149,9 +149,83 @@ main,
 .article{
     padding: 10px;
 }
+/* h2는 안 보이게 처리 할텐데 시각 장애인은 인지가 가능 하여야 하므로,
+ * height: 0 으로 하는 것은 화면 낭독기가 면적이 없으면 읽지 못하는 경우가
+ * 있기 때문에 아래와 같이 처리
+ */
+.sr-only{
+    position: absolute;
+    height: 1px;
+    overflow: hidden;
+}
 /* Mobile */
+/* only all and ,
+ * only 미디어 쿼리만 이 안쪽에 있는 구문을 해석해주세요 라는 의도
+ * only이 없어도 된다. 쓸데 없다.
+ * all은 대상 미디어를 구분 할 수있음
+ * print, screen ....
+ * and( & ) ,( | )
+ */
 @media (max-width: 767px){
     /* 화면을 줄여보면 responsive 로 적용된다.  */
+    .gnb{
+        margin-bottom: 15px;
+    }
+    .gnb ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .gnb>ul{
+        display: none;
+    }
+    .gnb a{
+        display: block;
+        /*모바일에서 터치가 쉽게 만들기위해서는 32px 이상 해주는게 좋다.
+         desktop은 16px이상*/
+        line-height: 32px;
+        padding: 0 10px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        background: #666;
+        text-decoration: none;
+        color: #fff;
+        border-bottom: 1px solid #555;
+        font-size: 14px;
+    }
+    .gnb>ul>li>a{
+        background: #333;
+    }
+    .gnb>button{
+        border: 0;
+        background: #666;
+        width: 46px;
+        /* button element 는 유일하게  height + padding 이 아님 */
+        height: 40px;
+        padding: 40px 0 0 0;
+        /* text가 안보이게 하려면 아래 코드를 넣어 주는것이 좋다.*/
+        overflow: hidden;
+        border-radius: 4px;
+        /*흰색봐 4개를 넣고 싶다면 어떻게? */
+        /* 포지션이 변경 되어야 함  */
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+    /*흰색봐 4개를 넣고 싶다면 어떻게? */
+    .gnb>button:before{
+        content: '';
+        position: absolute;
+        top: 7px;
+        left: 4px;
+        right: 4px;
+        /*double은 9px 을 3으로 나눠서 1/3 지점에 하나 3/3 지점에 하나 그림 */
+        border-top: 12px double #fff;
+        border-bottom: 12px double #fff;
+        height: 4px;
+    }
 }
 
 
