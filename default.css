@@ -6,7 +6,7 @@
 /* 이걸 초기화 시켜줄 필요가 있음 */
 html,
 body{
-    min-height: 100%;x`
+    min-height: 100%;
 }
 body{
     margin: 0;
@@ -16,7 +16,30 @@ body{
 header, footer, section, article, nav, aside, figure, figcaption{
     display: block;
 }
+/*부모 박스가 이미 보다 작을때 이미지 리사이즈 너비, 높이 모두 반응형으로.. */
+img,
+video,
+video>object{
+    max-width: 100%;
+    height: auto
+}
+video,
+video>object{
+    min-width: 100%;
+}
+.vframe{
+    height: 0;
+    padding-top: 56.25%;
+    position: relative;
+}
+.vframe>ifame{
+    width: 100%;
+    height: 100%
+    position: absolute;
+    top: 0;
+    left: 0;
 
+}
 /* layout */
 /*
 [href="#main"]{
@@ -60,6 +83,21 @@ main{
     background: blue;
 }
 */
+/* Common component*/
+.table{
+    overflow: hidden;
+}
+.table>table{
+    border: 1px solid #ccc;
+    border-right: 0;
+    border-bottom: 0;
+}
+.table th,
+.table td{
+    border: 1px solid #ccc;
+    border-top: 0;
+    border-left: 0;
+}
 /* All ( 공통 스타일, 모바일, 태블릿, 데스크탑 모두 ) */
 /* 먼저 공통 속성을 파악 해두는것이 도움이 된다. */
 body{
@@ -69,6 +107,13 @@ body{
     background: -ms-linear-gradient( #ccc,#fff);
     background: linear-gradient( #ccc,#fff);
     margin: 0 10px;
+    /* 가로 스크롤은 필요 없음 */
+    overflow-x: hidden;
+}
+.container{
+    min-width: 300px;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 .header>h1{
     font-size: 24px;
@@ -85,12 +130,14 @@ body{
 }
 
 .lnb>h2{
+    /* h2 element는 자동으로 margin을 갖기 때문에 margin을 초기화 해줌 */
+    /* css에서 값이 0 인 경우 모든 단위는 생략 가능함, 생략하는 것을 강력히 권장 */
     margin: 0;
-    border : 1px solid #ccc;
-    border-left: 0;
-    border-right: 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     font-size: 14px;
     padding: 0 10px;
+    /* inline text 를 수직으로 중앙 정렬 할 떄 line-height값을 설정하면 자동으로 text가 중앙으로 정렬됨, padding으로 설정 가능하지만, padding으로 top, bottom을 계산하여 지정하여야 하기 때문에 line-height값이 더 편함*/
     line-height: 32px;
 }
 .lnb>ul {
@@ -108,7 +155,8 @@ body{
     font-size: 12px;
 }
 .aside{
-    background: #ddd;
+    background: #ccc;
+    /* border radius가 적용되지 않은 것 처럼 보이는 원인 중 하나는, border radiuse를 설정 한 element 안의 element가 영역을 벗어났기 때문 일 수 있음 */
     border-radius: 4px;
 }
 /* block 레벨에서 line-height 속성이 수직 중앙 정렬이 되지 않는다. inline일때만 */
@@ -133,6 +181,7 @@ body{
     display: block;
 }
 .footer{
+    /* border 속성 때문에 footer안의 p tag와 수직 마진 중첩 현상이 발생하지 않음 */
     border-top: 1px solid #ccc;
     font-size: 12px;
     margin: 15px 0 0 0;
@@ -147,13 +196,16 @@ main,
     margin-bottom: 15px;
 }
 .article{
+    min-height: 300px;
     padding: 10px;
 }
-/* h2는 안 보이게 처리 할텐데 시각 장애인은 인지가 가능 하여야 하므로,
- * height: 0 으로 하는 것은 화면 낭독기가 면적이 없으면 읽지 못하는 경우가
- * 있기 때문에 아래와 같이 처리
- */
-.sr-only{
+/* bootstrap에서 보통 화면에 보이지 않는 엘리먼트에 적용할 class 명을 sr-only라고 함 screen reader only */
+.sr-only {
+    /* display: none;속성은 어떻게 해도 접근할 수 없음 즉 시각장애인들도 접근 불가능 */
+    /*display: none;*/
+
+    /* 화면에 보이지 않도록 1px 높이로 설정하고 넘어가는 부분은 hidden 처리를 하면 모바일 화면에서는 보이지 않음 */
+    /* 높이값을 0px로 하면 어떤 브라우저에서는 화면 낭독기가 없는 엘리먼트로 생각하기 떄문에 높이값을 설정해줌 */
     position: absolute;
     height: 1px;
     overflow: hidden;
@@ -218,7 +270,8 @@ main,
     .gnb>button:before{
         content: '';
         position: absolute;
-        top: 7px;
+        top: 6px;
+        /* position: aboslute;일 때 left값과 width값을 설정해서 면적을 만들 수 있지만, left, right를 설정하여 너비를 결정할 수 있음,  */
         left: 4px;
         right: 4px;
         /*double은 9px 을 3으로 나눠서 1/3 지점에 하나 3/3 지점에 하나 그림 */
@@ -232,16 +285,119 @@ main,
 /* Tablet & Desktop:이게 필요하지 않을수도 있지만, tablet과 dektop에 공통으로 적용 되는 스타일  */
 @media (min-width: 768px){
     /* 화면을 줄여보면 responsive 로 적용된다.  */
+
+    .body:after{
+     content: '';
+     display: block;
+     clear: both;
+  }
+    .gnb{
+        margin-bottom: 20px;
+    }
+   .gnb>ul{
+     display: block!important;
+     position: relative;
+   }
+   .gnb>button{
+     display: none;
+   }
+   .gnb ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+   }
+   .gnb ul:after{
+      content: '';
+      display: block;
+      clear: both;
+   }
+   .gnb ul ul{
+     display: none;
+   }
+   .gnb>ul{
+     border-bottom:40px solid #333;
+   }
+   .gnb>ul>li{
+     float: left;
+     margin-right: 1px;
+   }
+   .gnb>ul>li>a{
+     display: block;
+     line-height: 40px;
+     padding: 0 25px;
+     text-decoration: none;
+     background: #666;
+     color: #fff;
+     font-weight: bold;
+     border-radius: 5px 5px 0 0;
+   }
+   .gnb>ul>.active>a{
+     background: #333;
+   }
+   .gnb>ul>.active>ul{
+     display: block;
+     position: absolute;
+     left: 0;
+   }
+   .gnb li li{
+     float: left;
+   }
+   .gnb li li>a{
+     line-height: 40px;
+     color: #fff;
+     text-decoration: none;
+     display: block;
+     padding: 0 20px;
+   }
 }
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1024px){
     /* 화면을 줄여보면 responsive 로 적용된다.  */
+    .body {
+        /* article 의 오른쪽 공간을 만들기 위해서는 padding 을 사용 한다. */
+        padding-right: 200px;
+    }
+    main {
+        /*float left 속성을 준다음 가변 폭을 설정하기 위해 우선 width도 100%로 설정해준다. */
+        float: left;
+        width: 100%;
+        /* 음수 마진을 설정하면 음수 공간 만큼 다른 요소가 들어올수 있다.  */
+        margin-right: -180px;
+    }
+    .lnb,
+    .aside{
+        float: right;
+        /*메뉴를 오른쪽으로 붙이기 위해서 사용 */
+        position: relative;
+        left: 200px;
+        width: 180px;
+    }
 }
 
 /* Desktop */
 @media (min-width: 1025px){
     /* 화면을 줄여보면 responsive 로 적용된다.  */
+    .body{
+        padding: 0 200px 0 220px;
+    }
+    main{
+        float: left;
+        width: 100%;
+        margin-right: -100%;
+    }
+    .lnb{
+        float: left;
+        width: 200px;
+        position: relative;
+        right: 220px;
+    }
+    .aside{
+        float: right;
+        width: 180px;
+        position: relative;
+        left: 200px;
+    }
 }
 
 
