@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no">
+        <title>레이아웃 &lsaquo; 웹 표준 UI 개발 실습</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+        <!--<link rel="stylesheet" href="default.css">0-->
+        <!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    </head>
+    <body>
+        <div class="root">
+            <header class="header">
+                <h1><a href="#">웹 표준 UI 개발 실습</a></h1>
+                <button type="button" class="gnb-toggle-btn">메뉴 열기</button>
+                <!-- 주요한 내용을 nav 에 사용할수 있다 -->
+                <nav class="gnb">
+                    <h2 class="sr-only">메뉴</h2>
+                    <ul>
+                        <li>
+                            <a href="menu1-1.html">웹 표준</a>
+                            <ul>
+                                <li><a href="menu1-1.html">레이아웃</a></li>
+                                <li><a href="menu1-2.html">콘텐츠</a></li>
+                                <li><a href="menu1-3.html">폼</a></li>
+                                <li><a href="menu1-4.html">메뉴1-4</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">메뉴2</a>
+                            <ul>
+                                <li><a href="#">메뉴2-1</a></li>
+                                <li><a href="#">메뉴2-2</a></li>
+                                <li><a href="#">메뉴2-3</a></li>
+                                <li><a href="#">메뉴2-4</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">메뉴3</a>
+                            <ul>
+                                <li><a href="#">메뉴3-1</a></li>
+                                <li><a href="#">메뉴3-2</a></li>
+                                <li><a href="#">메뉴3-3</a></li>
+                                <li><a href="#">메뉴3-4</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">메뉴4</a>
+                            <ul>
+                                <li><a href="#">메뉴4-1</a></li>
+                                <li><a href="#">메뉴4-2</a></li>
+                                <li><a href="#">메뉴4-3</a></li>
+                                <li><a href="#">메뉴4-4</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="search">
+                        <input type="search" required title="검색" placeholder="KEYWORD">
+                        <button type="submit">검색</button>
+                    </form>
+                </nav>
+            </header>
+            <hr>
+            <div class="body">
+                <main class="main" id="main">
+                    <article>
+                        <h1>레이아웃</h1>
+                        <section>
+                            <h2>학습 목표</h2>
+                            <p>웹 표준 기반 반응형 레이아웃 구현 방법을 알게 된다.</p>
+                        </section>
+                        <section>
+                            <h2>배우는 것</h2>
+                            <ol>
+                                <li>HTML5 문법 기초</li>
+                                <li>CSS2~3 문법 기초</li>
+                                <li>jQuery 문법 기초</li>
+                                <li>웹 폰트 적용</li>
+                                <li>반응형 웹 구현</li>
+                                <li>브라우저 호환성 문제 극복</li>
+                                <li>장애인 접근성 보장</li>
+                            </ol>
+                        </section>
+                        <section>
+                            <h2>생각해 볼 문제</h2>
+                            <p>내가 알고 있는 인기있는 웹 사이트에서 반응형 웹 기술을 적용하지 않은 이유는 무엇인가?</p>
+                        </section>
+                    </article>
+                </main>
+                <nav class="lnb">
+                    <h2>웹 표준</h2>
+                    <ul>
+                        <li><a href="menu1-1.html">레이아웃</a></li>
+                        <li><a href="menu1-2.html">콘텐츠</a></li>
+                        <li><a href="menu1-3.html">폼</a></li>
+                        <li><a href="menu1-4.html">메뉴1-4</a></li>
+                    </ul>
+                </nav>
+                <aside class="aside">
+                    <h2>바로가기</h2>
+                    <ul>
+                        <li><a href="#">사이트맵</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Q&amp;A</a></li>
+                    </ul>
+                </aside>
+            </div>
+            <hr>
+            <footer class="footer">
+                <p>Copyright &copy; SK planet. All rights reserved.</p>
+            </footer>
+        </div>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script src="default.js"></script>
+    </body>
+</html>
